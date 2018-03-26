@@ -4,18 +4,16 @@
 // provide only one answer per radio button
 // if click submit end the timer and run function to check answers
 // if timer runs out say game over time out 0 score?
-
 // list correct, incorrect, unaswered questions
 
 
 // when the html has loaded, run the following code
 $(document).ready(function() {
 
-
     var correctAnswers = 0;
     var incorrectAnswers = 0;
     var unaswered = 0;
-    var timer = 30;
+    var timer = 3;
 
     // hide the questions and end results until they are called
     $(".gameQuestions").hide();
@@ -29,36 +27,36 @@ $(document).ready(function() {
     })
 
     // create a function that will decrement the timer by one and end the game if the timer is up or
-    // if the user clicks submit answers
+    // if the user clicks submit answers button
     function countdown () {
         timer--;
-        
         $('#timeRemaining').html(timer + " Seconds");
+    }
+
+    // this function makes the countdown function repeat at an increment of 1 second
+    function countdownInterval () {
+
+        var timeDecrement = setInterval(countdown, 1000);
 
         if (timer < 0) {
             $(".gameQuestions").hide();
             $(".endGame").show();
-            clearInterval(countdown);
             checkResults(); // move on to check results
+            clearInterval(timeDecrement);
+
         }
 
         $(".submitButton").on("click", function() {
             $(".gameQuestions").hide();
             $(".endGame").show();
-            clearInterval(countdown);
             checkResults(); //move on to check results
+            clearInterval(timeDecrement);
 
         })
-    }
 
-    // this function gives the countdown function an increment of 1 second
-    function countdownInterval () {
-        setInterval(countdown, 1000);
-
-    }
+    };
 
     function checkResults () {
-
 
         var Q1 = $('input:radio[name="q1"]:checked').val();
         var Q2 = $('input:radio[name="q2"]:checked').val();
@@ -110,10 +108,21 @@ $(document).ready(function() {
         $("#incorrectAnswers").html(incorrectAnswers);
         $("#unanswered").html(unaswered);
 
+        $("#restartButton").on("click", resetGame);
 
+    };
 
-    }
+    function resetGame () {
+        $(".gameQuestions").hide();
+        $(".endGame").hide();
+        $(".starter").show();
 
+        // clear radio buttons
 
+        correctAnswers = 0;
+        incorrectAnswers = 0;
+        unaswered = 0;
+        timer = 30;
+    };
 
 });
