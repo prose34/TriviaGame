@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css"/>
-    <script src="assets/javascript/app.js"></script>
 </head>
 <body>
     <div class="container starter">
@@ -30,9 +29,9 @@
             <div class="col-md-10 offset-md-1 mainGame">
                 <h1 class="text-center triviaTitle">Marvel Comics Trivia!</h1>
 
-                <div class="row">
-                    <div class="col-md-4 text-center">
-                        <h5 id="timer">Time Remaining: <span id="timerRemaining">30 Seconds</span></h5>
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <h5 id="timer">Time Remaining: <span id="timeRemaining">30 Seconds</span></h5>
                     </div>
                 </div>
 
@@ -42,17 +41,23 @@
                             <h4>1. What is Spider-Man's real name?</h4>
                             <!-- Peter Parker -->
                             <input type="radio" name="q1" value="Harry Osborn"> Harry Osborn 
-                            <input type="radio" name="q1" value="Peter Parker"> Peter Parker 
-                            <input type="radio" name="q1" value="Stan Lee"> Stan Lee 
-                            <input type="radio" name="q1" value="Tony Stark"> Tony Stark 
+                            <br>   
+                            <input type="radio" name="q1" value="Peter Parker"> Peter Parker  
+                            <br>  
+                            <input type="radio" name="q1" value="Stan Lee"> Stan Lee    
+                            <br>
+                            <input type="radio" name="q1" value="Tony Stark"> Tony Stark    
                         </div>    
 
                         <div class="questionList">
                             <h4>2. Who is not a member of the Fantastic Four?</h4>
                             <!-- Black Widow -->
                             <input type="radio" name="q2" value="Thing"> Thing 
+                            <br>
                             <input type="radio" name="q2" value="Black Widow"> Black Widow
+                            <br>
                             <input type="radio" name="q2" value="Human Torch"> Human Torch 
+                            <br>
                             <input type="radio" name="q2" value="Mr. Fantastic"> Mr. Fantastic
                         </div>    
                         
@@ -60,8 +65,11 @@
                             <h4>3. Who is the strongest character?</h4>
                             <!-- Hulk -->
                             <input type="radio" name="q3" value="Iron Man"> Iron Man
+                            <br>
                             <input type="radio" name="q3" value="Spider-man"> Spider-Man
+                            <br>
                             <input type="radio" name="q3" value="Hawkeye"> Hawkeye
+                            <br>
                             <input type="radio" name="q3" value="Hulk"> Hulk 
                         </div>
 
@@ -69,8 +77,11 @@
                             <h4>4. Daredevil has which physical impairment?</h4>
                             <!-- Blind -->
                             <input type="radio" name="q4" value="Deaf"> Deaf
+                            <br>
                             <input type="radio" name="q4" value="Mute"> Mute
+                            <br>
                             <input type="radio" name="q4" value="Blind"> Blind
+                            <br>
                             <input type="radio" name="q4" value="Smell"> Smell
                         </div>
 
@@ -78,8 +89,11 @@
                             <h4>5. Cyclops is a member of which team?</h4>
                             <!-- X-men -->
                             <input type="radio" name="q5" value="X-men"> X-men
+                            <br>
                             <input type="radio" name="q5" value="Avengers"> Avengers
+                            <br>
                             <input type="radio" name="q5" value="Justice League"> Justice League
+                            <br>
                             <input type="radio" name="q5" value="Fantastic Four"> Fantastic Four
                         </div>
 
@@ -92,21 +106,24 @@
     </div>
 
 
-    <div>
-
-            <div id = end_container>
-                    <!-- Static Game Logo -->
-                    <h1 class = "logo">Rutgers Trivia</h1>
-        
-                    <h1 id = "done">All Done!</h1>
-                    <br>
-        
-                    <h1>Correct Answers: <span id = "correct_answers">0</span></h1>
-                    <h1>Incorrect Answers: <span id = wrong_answers>0</span></h1>
-                    <h1>Unanswered: <span id = "unanswered">0</span></h1>
+    <div class="container endGame">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 mainGame text-center">
+                <h1 class="triviaTitle">Marvel Comics Trivia!</h1>
+                <h4>Correct Answers: <span id="correctAnswers">0</span></h4>
+                <h4>Incorrect Answers: <span id="incorrectAnswers">0</span></h4>
+                <h4>Unanswered: <span id="unanswered">0</span></h4>
+                <div class="row">
+                    <div class="col-md-4 offset-md-4 restartButton text-center">
+                        <button id="restartButton">Restart</button>
+                    </div>
                 </div>
-
+            </div>
+        </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
 
 
 </body>
