@@ -27,15 +27,15 @@ $(document).ready(function() {
         countdownInterval(); //start the timer when the questions are displayed
     })
 
-    // create a function that will decrement the timer by one and end the game if the timer is up or
-    // if the user clicks submit answers button
+    // create a function that will decrement the timer by one and end the game if the timer is up 
+    // check results.
     function countdown () {
 
         timer--;
 
         $('#timeRemaining').html(timer + " Seconds");
 
-        if (timer < 0.5) {
+        if (timer < 0.1) { //I have this set to 0.1 just so a negative number doesn't show up for a split second when the timer resets when the game is reset
             $(".gameQuestions").hide();
             $(".endGame").show();
             // clearInterval(timeDecrement);
@@ -52,6 +52,8 @@ $(document).ready(function() {
 
     };
 
+    
+    // if the user clicks submit answers button, it skips the timer and ends the game, checks results
     $(".submitButton").on("click", function() {
             $(".gameQuestions").hide();
             $(".endGame").show();
@@ -60,14 +62,17 @@ $(document).ready(function() {
 
     function checkResults () {
 
-        clearInterval(timeDecrement);
+        clearInterval(timeDecrement); // end the countdown function and stop interval timing
 
+        //set the value chose in the radio button by the user equal to a variable
+        // grabbing value from html value (string)
         var Q1 = $('input:radio[name="q1"]:checked').val();
         var Q2 = $('input:radio[name="q2"]:checked').val();
         var Q3 = $('input:radio[name="q3"]:checked').val();
         var Q4 = $('input:radio[name="q4"]:checked').val();
         var Q5 = $('input:radio[name="q5"]:checked').val();
     
+        // if statements to compare answer to correct answer, add to incorrect or unanswered total as well
         if (Q1 == "Peter Parker") {
             correctAnswers++;
         } else if (Q1 == undefined) {
@@ -108,10 +113,12 @@ $(document).ready(function() {
             incorrectAnswers++;
         };
 
+        // display total number of correct, wrong, and unanswered questions on end results container
         $("#correctAnswers").html(correctAnswers);
         $("#incorrectAnswers").html(incorrectAnswers);
         $("#unanswered").html(unaswered);
 
+        // reset the game if the reset button is pressed
         $("#restartButton").on("click", resetGame);
 
     };
@@ -122,11 +129,15 @@ $(document).ready(function() {
         $(".starter").show();
 
         // clear radio buttons
+        // $(this).prop('checked', false);
+        $("input").prop("checked", false); //this will clear out all of the selected choices in the radio buttons
+
 
         correctAnswers = 0;
         incorrectAnswers = 0;
         unaswered = 0;
         timer = 30;
+        $('#timeRemaining').html(timer + " Seconds");
     };
 
 });
