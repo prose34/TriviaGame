@@ -13,7 +13,7 @@ $(document).ready(function() {
     var correctAnswers = 0;
     var incorrectAnswers = 0;
     var unaswered = 0;
-    var timer = 5;
+    var timer = 30;
     var timeDecrement;
 
     // hide the questions and end results until they are called
@@ -35,7 +35,7 @@ $(document).ready(function() {
 
         $('#timeRemaining').html(timer + " Seconds");
 
-        if (timer < 0) {
+        if (timer < 0.5) {
             $(".gameQuestions").hide();
             $(".endGame").show();
             // clearInterval(timeDecrement);
@@ -126,7 +126,7 @@ $(document).ready(function() {
         correctAnswers = 0;
         incorrectAnswers = 0;
         unaswered = 0;
-        timer = 5;
+        timer = 30;
     };
 
 });
